@@ -568,4 +568,5 @@ ax_search:
 # These parameters are not used by the kge framework itself. It can be used to
 # add additional configuration options or information to this config.
 user:
+  read_binary: ""
   +++: +++
