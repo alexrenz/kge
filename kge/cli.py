@@ -317,7 +317,7 @@ def main():
                         # read relation embeddings
                         relation_tensor = checkpoint["model"][0]['_relation_embedder._embeddings.weight'].to(cpu)
                         relation_np = relation_tensor.numpy()
-                        relation_binary = np.fromfile(mpath + ".relations.bin", dtype=np.float64).astype(np.float32).reshape(relation_np.shape)
+                        relation_binary = np.fromfile(mpath + ".relations.bin", dtype=np.float32).reshape(relation_np.shape)
                         np.copyto(relation_np, relation_binary)
                         checkpoint["model"][0]['_relation_embedder._embeddings.weight'] = relation_tensor.to(job)
 
@@ -325,7 +325,7 @@ def main():
                         print("entity shape: " + str(checkpoint["model"][0]['_entity_embedder._embeddings.weight'].shape))
                         entity_tensor = checkpoint["model"][0]['_entity_embedder._embeddings.weight'].to(cpu)
                         entity_np = entity_tensor.numpy()
-                        entity_binary = np.fromfile(mpath + ".entities.bin", dtype=np.float64).astype(np.float32).reshape(entity_np.shape)
+                        entity_binary = np.fromfile(mpath + ".entities.bin", dtype=np.float32).reshape(entity_np.shape)
                         np.copyto(entity_np, entity_binary)
                         checkpoint["model"][0]['_entity_embedder._embeddings.weight'] = entity_tensor.to(job)
 
